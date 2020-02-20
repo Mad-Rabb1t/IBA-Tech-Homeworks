@@ -17,55 +17,55 @@ public class ShootingTheSquare {
         int target_x = (int) (Math.random()*(5));
         boolean victory = false;
 
+
         System.out.println("All set. Get ready to rumble!");
+        Scanner scan = new Scanner(System.in);
+        print(btf);
+        boolean st2 = false;
+        int x;
+        int y=0;
 
-        while (!victory){
-            Scanner line = new Scanner(System.in);
+            while (!victory){
+                print(btf);
 
-            print(btf);
-
-            System.out.println("Enter a line of fire: ");
-            if(!line.hasNextInt()) {
-                System.out.println("Invalid input. Please enter an integer from 1 to 5");
-            }
-            else{
-                int y = line.nextInt();
-                if(y>5 || y<1){
-                System.out.println("Invalid input. Please enter an integer from 1 to 5");
-            } else {
-                while (true) {
-                    Scanner cell = new Scanner(System.in);
-                    System.out.println("Enter a cell in line of fire: ");
-                    if (!cell.hasNextInt()) {
+                if (!st2) {
+                    System.out.println("Enter a line of fire: ");
+                    String input = scan.nextLine();
+                    if (!isValid(input)) {
                         System.out.println("Invalid input. Please enter an integer from 1 to 5");
                     } else {
-                        int x = cell.nextInt() ;
-                        if(x>5 || x<1) System.out.println("Invalid input. Please enter an integer from 1 to 5");
-                        else {
-
-                            if(y-1==target_y && x-1==target_x){
-                               btf[y-1][x-1] = "X";
-                               victory = true;
-                               print(btf);
-                            }
-                            else {
-                                btf[y-1][x-1] = "*";
-                            }
-
-
-                            break;
-                        }
+                        y = Integer.parseInt(input);
+                        st2 = true;
                     }
                 }
-                //break;
-            }
+                if(st2){
+                    System.out.println("Enter a cell in the line of fire: ");
+                    String input = scan.nextLine();
+                    if (!isValid(input)){
+                        System.out.println("Invalid input. Please enter an integer from 1 to 5");
+                    } else {
+                        x = Integer.parseInt(input);
+                        st2 = false;
+
+                        if(y-1==target_y && x-1==target_x){
+                            btf[y-1][x-1] = "X";
+                            victory = true;
+                            print(btf);
+                        }
+                        else {
+                            btf[y-1][x-1] = "*";
+                        }
+
+                    }
+                }
+
 
 
             }
 
         }
 
-    }
+
 
     public static void print (String[][] x){
         System.out.print("0 |");
@@ -80,6 +80,16 @@ public class ShootingTheSquare {
             }
             System.out.println();
         }
+
+    }
+    public static boolean isValid (String check) {
+        try{
+           Integer.parseInt(check);
+        } catch (Exception e) {
+            return false;
+        }
+        int i = Integer.parseInt(check);
+        return i <= 5 && i >= 1;
 
     }
 }
