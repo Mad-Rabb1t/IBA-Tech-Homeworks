@@ -22,33 +22,21 @@ public class Main {
         event[6][0] = "saturday";
         event[6][1] = "Date a girl";
         //
-        Pet pet1 = new Pet("dog", "chop");
-        Pet pet2 = new Pet();
-        pet1.habits = habits;
-        pet1.age = 6;
-        pet2.species = "Dog";
-        pet2.nickname = "Goofy";
-        pet2.age = 4;
-        pet2.habits = habits;
+        Pet pet1 = new Pet("dog", "chop", 6,75,habits);
+        Pet pet2 = new Pet("Dog", "Goofy", 4, 80, habits);
         Pet pet3 = new Pet("Cat", "Stinger", 6, 80, habits);
 
-        Human dad1 = new Human();
-        dad1.name = "Michael";
-        dad1.surname = "Townley";
-        dad1.b_year = 1965;
+        Human dad1 = new Human("Michael","Townley",1965);
         Human mom1 = new Human("Amanda","Townley",1969);
         Human cld1 = new Human("Jimmy", "Townley", 1991, 80, pet1, mom1, dad1 , event);
 
         Human dad2 = new Human("Lester", "Crest", 1969);
         Human mom2 = new Human("Paige", "Harris", 1981);
-        Human cld2 = new Human("Olivia", "Crest", 2005, mom2, dad2);
-        cld2.pet = pet2;
+        Human cld2 = new Human("Olivia", "Crest", 2005, 45, pet2 ,mom2, dad2, event);
 
         Human dad3 = new Human("Samuel", "Jackson", 1999);
         Human mom3 = new Human("Samantha", "Jackson", 2000);
-        Human cld3 = new Human("Susan", "Jackson", 2019, mom3, dad3);
-        cld3.pet = pet3;
-
+        Human cld3 = new Human("Susan", "Jackson", 2019,12,pet3, mom3, dad3, event);
 
         System.out.println(cld1.toString());
         cld1.describePet();

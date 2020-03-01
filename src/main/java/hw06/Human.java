@@ -1,4 +1,4 @@
-package hw05;
+package hw06;
 
 import java.util.Arrays;
 import java.util.Objects;
@@ -10,47 +10,36 @@ public class Human {
     private int iq;
     private String[][] schedule;
     private Family family;
+    public enum DayOfTheWeek {
+        Friday,
+        Monday,
+        Saturday,
+        Sunday,
+        Thursday,
+        Tuesday,
+        Wednesday
 
-
-
-    public String[][] getSchedule() {
-        return schedule;
     }
 
-    public void setSchedule(String[][] schedule) {
-        this.schedule = schedule;
-    }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public String getName() {
+    public String getName(){
         return name;
+    }
+
+    public Family getFamily() {
+        return family;
     }
 
     public void setSurname(String surname) {
         this.surname = surname;
     }
 
-    public String getSurname() {
-        return surname;
-    }
-
-    public void setIq(int iq) {
-        this.iq = iq;
-    }
-
-    public int getIq() {
-        return iq;
-    }
-
     public void setB_year(int b_year) {
         this.b_year = b_year;
-    }
-
-    public int getB_year() {
-        return b_year;
     }
 
     public void setFamily(Family family) {
@@ -66,15 +55,16 @@ public class Human {
         this.family = family;
     }
 
-    public Human(String name, String surname, int year, int iq,String[][] schedule){
+    public Human(String name, String surname, int year, int iq, String[][] schedule){
         this.name = name;
         this.surname = surname;
         b_year = year;
         this.iq = iq;
         this.schedule = schedule;
     }
-
     public Human(){}
+
+
 
     @Override
     public String toString() {
@@ -96,5 +86,9 @@ public class Human {
         return Objects.hash(name, surname, b_year);
     }
 
-
+    @Override
+    protected void finalize() throws Throwable {
+        System.out.println("Human has been deleted...");
+        super.finalize();
+    }
 }

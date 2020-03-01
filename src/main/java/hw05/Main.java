@@ -22,24 +22,14 @@ public class Main {
         event[6][0] = "saturday";
         event[6][1] = "Date a girl";
         //
-        Pet pet1 = new Pet("dog", "chop");
-        Pet pet2 = new Pet();
-        pet1.setHabits(habits);
-        pet1.setAge(6);
-        pet2.setSpecies("Dog");
-        pet2.setNickname("Goofy");
-        pet2.setAge(4);
-        pet2.setHabits(habits);
+        Pet pet1 = new Pet("dog", "chop", 6, 62, habits);
+        Pet pet2 = new Pet("Dog","Goofy", 4, 34, habits);
         Pet pet3 = new Pet("Cat", "Stinger", 6, 80, habits);
 
 
-        Human dad1 = new Human();
+        Human dad1 = new Human("Michael", "Townley", 1965, 82, event);
         Human mom1 = new Human();
         Family fam1 = new Family(dad1,mom1);
-        dad1.setName("Michael");
-        dad1.setSurname("Townley");
-        dad1.setB_year(1965);
-        mom1 = new Human("Amanda","Townley",1969,74,event,fam1);
         Human cld1 = new Human("Jimmy", "Townley", 1991, 45,event, fam1);
         fam1.setPet(pet1);
 
@@ -48,7 +38,7 @@ public class Main {
         Family fam2 = new Family(dad2,mom2);
         dad2 = new Human("Lester", "Crest", 1969,100, event,fam2);
         mom2 = new Human("Paige", "Harris", 1981, 92, event, fam2);
-        Human cld2 = new Human("Olivia", "Crest", 2005, 15, event, fam2);
+        Human cld2 = new Human("Jane", "Crest", 2000, 68, event, fam2);
         fam2.setPet(pet2);
 
         Human dad3 = new Human();

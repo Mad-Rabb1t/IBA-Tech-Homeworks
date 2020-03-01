@@ -57,10 +57,10 @@ public class Family {
         else System.out.println("very sly");
     }
 
-    public void addChild( Human child, Family family){
+    public void addChild( Human child){
         children[cld_index] = child;
         cld_index++;
-        child.setFamily(family);
+        child.setFamily(this);
     }
 
     public boolean deleteChild(int index){
