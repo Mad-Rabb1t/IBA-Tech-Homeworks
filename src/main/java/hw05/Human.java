@@ -11,6 +11,25 @@ public class Human {
     private String[][] schedule;
     private Family family;
 
+    public Human(String name, String surname, int year, int iq, String[][] schedule, Family family) {
+        this.name = name;
+        this.surname = surname;
+        b_year = year;
+        this.iq = iq;
+        this.schedule = schedule;
+        this.family = family;
+    }
+
+    public Human(String name, String surname, int year, int iq, String[][] schedule) {
+        this.name = name;
+        this.surname = surname;
+        b_year = year;
+        this.iq = iq;
+        this.schedule = schedule;
+    }
+
+    public Human() {
+    }
 
 
     public String[][] getSchedule() {
@@ -57,24 +76,9 @@ public class Human {
         this.family = family;
     }
 
-    public Human(String name, String surname, int year, int iq, String[][] schedule, Family family){
-        this.name = name;
-        this.surname = surname;
-        b_year = year;
-        this.iq = iq;
-        this.schedule = schedule;
-        this.family = family;
+    public Family getFamily(){
+        return family;
     }
-
-    public Human(String name, String surname, int year, int iq,String[][] schedule){
-        this.name = name;
-        this.surname = surname;
-        b_year = year;
-        this.iq = iq;
-        this.schedule = schedule;
-    }
-
-    public Human(){}
 
     @Override
     public String toString() {

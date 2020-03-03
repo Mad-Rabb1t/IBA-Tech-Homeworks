@@ -6,9 +6,17 @@ import java.util.Objects;
 public class Family {
     private Human mother;
     private Human father;
-    private Human[] children;
+    private Human[] children = new Human[1];
     private Integer cld_index = 0;
     private Pet pet;
+
+    public Family(Human father, Human mother, Pet pet) {
+        this.father = father;
+        this.mother = mother;
+        this.pet = pet;
+        father.setFamily(this);
+        mother.setFamily(this);
+    }
 
     public Human getFather() {
         return father;
@@ -42,43 +50,41 @@ public class Family {
         this.children = children;
     }
 
-    public Family(Human father, Human mother){
-        this.father = father;
-        this.mother = mother;
-    }
-
-    public void greetPet(){
+    public void greetPet() {
         System.out.printf("Hello, %s\n", this.pet.getNickname());
     }
 
-    public void describePet(){
-        System.out.printf("I have a %s, he is %d years old, he is ",pet.getSpecies(),pet.getAge());
-        if(pet.getTrickLevel()<50) System.out.println("almost not sly.");
+    public void describePet() {
+        System.out.printf("I have a %s, he is %d years old, he is ", pet.getSpecies(), pet.getAge());
+        if (pet.getTrickLevel() < 50) System.out.println("almost not sly.");
         else System.out.println("very sly");
     }
 
-    public void addChild( Human child){
+    public void addChild(Human child) {
+        if(cld_index == children.length) {
+            children = Arrays.copyOf(children,children.length+1);
+        }
         children[cld_index] = child;
         cld_index++;
         child.setFamily(this);
     }
 
-    public boolean deleteChild(int index){
+    public boolean deleteChild(int index) {
         try {
             for (; index - 1 < children.length - 1; index++) {
-                children[index-1] = children[index];
+                children[index - 1] = children[index];
             }
             cld_index--;
-        } catch (Exception ex){
+        } catch (Exception ex) {
             System.out.println("Unable to delete the child ");
             return false;
         }
         return true;
     }
 
-    public boolean deleteChild(Human child){
+    public boolean deleteChild(Human child) {
         try {
-            for (int i = 0; i<children.length - 1; i++) {
+            for (int i = 0; i < children.length - 1; i++) {
                 if (children[i].hashCode() == child.hashCode()) {
                     if (children[i].equals(child)) {
                         if (children.length - 1 - i >= 0)
@@ -90,10 +96,10 @@ public class Family {
         } catch (Exception ex) {
             System.out.println("Unable to delete the child ");
         }
-        return  true;
+        return true;
     }
 
-    public int countFamily(){
+    public int countFamily() {
         return children.length + 2;
     }
 
