@@ -6,10 +6,14 @@ import java.util.Objects;
 public class Family {
     private Human mother;
     private Human father;
-    private Human[] children = new Human[5];
+    private Human[] children = new Human[1];
     private Integer cld_index = 0;
     private Pet pet;
 
+    public Family(Human father, Human mother) {
+        this.father = father;
+        this.mother = mother;
+    }
 
     public Human getFather() {
         return father;
@@ -43,11 +47,6 @@ public class Family {
         this.children = children;
     }
 
-    public Family(Human father, Human mother) {
-        this.father = father;
-        this.mother = mother;
-    }
-
     public void greetPet() {
         System.out.printf("Hello, %s\n", this.pet.getNickname());
     }
@@ -59,8 +58,8 @@ public class Family {
     }
 
     public void addChild(Human child) {
-        if(cld_index == children.length -1) {
-            children = new Human[cld_index+2];
+        if (cld_index == children.length) {
+            children = Arrays.copyOf(children, children.length + 1);
         }
         children[cld_index] = child;
         cld_index++;
@@ -69,13 +68,21 @@ public class Family {
 
     public boolean deleteChild(int index) {
         try {
-            if (children[index]!=null){
-                for (; index - 1 < children.length - 1; index++) {
-                    children[index - 1] = children[index];
+            if (index < 0) throw new IllegalArgumentException("Index cannot be negative!");
+            if (children[index] != null) {
+                if (index == children.length - 1) {
+                    Human[] temp = new Human[children.length - 1];
+                    System.arraycopy(children, 0, temp, 0, children.length - 1);
+                    children = temp;
+                } else {
+                    Human[] temp = new Human[children.length - 1];
+                    System.arraycopy(children, 0, temp, 0, index);
+                    System.arraycopy(children, index + 1, temp, index, children.length - index - 1);
+                    children = temp;
                 }
-            cld_index--;
-            return true;
-        } else{
+                cld_index--;
+                return true;
+            } else {
                 System.out.println("Unable to delete the child...");
             }
         } catch (Exception ex) {
@@ -96,7 +103,7 @@ public class Family {
                 }
             }
 
-        } catch ( Exception ex) {
+        } catch (Exception ex) {
             System.out.println("Error occurred");
         }
         System.out.println("Unable to delete the child...");
@@ -105,11 +112,11 @@ public class Family {
 
     public int countFamily() {
         int count = 0;
-        for (int i = 0; i< children.length -1;i++) {
-            if(children[i]!=null)
+        for (int i = 0; i < children.length - 1; i++) {
+            if (children[i] != null)
                 count++;
         }
-        return count+2;
+        return count + 2;
     }
 
     @Override
