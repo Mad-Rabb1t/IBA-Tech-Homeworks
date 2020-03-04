@@ -1,7 +1,11 @@
 package hw07;
 
-public class Dog extends Pet implements Foul{
+public class Dog extends Pet implements Foul {
 
+    public Dog(String nickname, int age, int trickLevel, String[] habits) {
+        super(nickname, age, trickLevel, habits);
+        super.species = Enum.species.Dog;
+    }
 
     @Override
     public void foul() {
@@ -13,8 +17,4 @@ public class Dog extends Pet implements Foul{
         System.out.printf("Hi owner. I'm %s, the dog, and I miss you!\n", nickname);
     }
 
-    public Dog(String nickname, int age, int trickLevel, String[] habits){
-        super(nickname, age, trickLevel, habits);
-        super.species = species.Dog;
-    }
 }

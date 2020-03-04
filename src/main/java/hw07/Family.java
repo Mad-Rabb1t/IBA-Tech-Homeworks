@@ -10,22 +10,29 @@ public class Family {
     private Integer cld_index = 0;
     protected Pet pet;
 
-
-    public Human getFather() {
-        return father;
-    }
-
-    public void setFather(Human father) {
+    public Family(Human father, Human mother, Pet pet) {
         this.father = father;
-    }
-
-    public Human getMother() {
-        return mother;
-    }
-
-    public void setMother(Human mother) {
         this.mother = mother;
+        this.pet = pet;
+        father.setFamily(this);
+        mother.setFamily(this);
     }
+
+//    public Human getFather() {
+//        return father;
+//    }
+
+//    public void setFather(Human father) {
+//        this.father = father;
+//    }
+
+//    public Human getMother() {
+//        return mother;
+//    }
+
+//    public void setMother(Human mother) {
+//        this.mother = mother;
+//    }
 
     public Pet getPet() {
         return pet;
@@ -43,10 +50,6 @@ public class Family {
 //        this.children = children;
 //    }
 
-    public Family(Human father, Human mother) {
-        this.father = father;
-        this.mother = mother;
-    }
 
     public void describePet() {
         System.out.printf("I have a %s, he is %d years old, he is ", pet.getSpecies(), pet.getAge());
@@ -55,8 +58,8 @@ public class Family {
     }
 
     public void addChild(Human child) {
-        if(cld_index == children.length) {
-            children = Arrays.copyOf(children,children.length+1);
+        if (cld_index == children.length) {
+            children = Arrays.copyOf(children, children.length + 1);
         }
         children[cld_index] = child;
         cld_index++;
@@ -65,24 +68,24 @@ public class Family {
 
     public boolean deleteChild(int index) {
         try {
-            if (children[index]!=null){
-                if(index == children.length - 1){
-                    Human[] temp = new Human[children.length -1];
-                    System.arraycopy(children,0,temp,0,children.length - 1);
+            if (children[index] != null) {
+                if (index == children.length - 1) {
+                    Human[] temp = new Human[children.length - 1];
+                    System.arraycopy(children, 0, temp, 0, children.length - 1);
                     children = temp;
                 } else {
                     Human[] temp = new Human[children.length - 1];
-                    System.arraycopy(children,0,temp,0, index);
-                    System.arraycopy(children,index+1, temp, index, children.length - index - 1);
+                    System.arraycopy(children, 0, temp, 0, index);
+                    System.arraycopy(children, index + 1, temp, index, children.length - index - 1);
                     children = temp;
                 }
-            cld_index--;
-            return true;
-        } else{
+                cld_index--;
+                return true;
+            } else {
                 System.out.println("Unable to delete the child...");
             }
         } catch (Exception ex) {
-            System.out.println("Unable to delete the child...");
+            System.out.println("Index is out of bounds!");
         }
         return false;
     }
@@ -91,26 +94,26 @@ public class Family {
         try {
             for (int i = 0; i < children.length; i++) {
 //                if (children[i].hashCode() == child.hashCode()) {
-                    if (children[i].equals(child)) {
+                if (children[i].equals(child)) {
 //                        children[i] = null;
-                        if(i == children.length - 1){
-                            Human[] temp = new Human[children.length -1];
-                            System.arraycopy(children,0,temp,0,children.length - 1);
-                            children = temp;
-                        } else {
-                            Human[] temp = new Human[children.length - 1];
-                            System.arraycopy(children,0,temp,0, i);
-                            System.arraycopy(children,i+1, temp, i, children.length - i - 1);
-                            children = temp;
-                        }
-
-                        cld_index--;
-                        return true;
+                    if (i == children.length - 1) {
+                        Human[] temp = new Human[children.length - 1];
+                        System.arraycopy(children, 0, temp, 0, children.length - 1);
+                        children = temp;
+                    } else {
+                        Human[] temp = new Human[children.length - 1];
+                        System.arraycopy(children, 0, temp, 0, i);
+                        System.arraycopy(children, i + 1, temp, i, children.length - i - 1);
+                        children = temp;
                     }
+
+                    cld_index--;
+                    return true;
+                }
 //                }
             }
 
-        } catch ( Exception ex) {
+        } catch (Exception ex) {
             System.out.println("Error occurred");
         }
         System.out.println("Unable to delete the child...");
@@ -123,7 +126,7 @@ public class Family {
             if (child != null)
                 count++;
         }
-        return count+2;
+        return count + 2;
     }
 
     @Override

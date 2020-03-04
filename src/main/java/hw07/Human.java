@@ -10,15 +10,25 @@ public class Human {
     protected int iq;
     protected String[][] schedule;
     protected Family family;
-    public enum DayOfTheWeek {
-        Friday,
-        Monday,
-        Saturday,
-        Sunday,
-        Thursday,
-        Tuesday,
-        Wednesday
 
+    public Human(String name, String surname, int year, int iq, String[][] schedule, Family family) {
+        this.name = name;
+        this.surname = surname;
+        b_year = year;
+        this.iq = iq;
+        this.schedule = schedule;
+        this.family = family;
+    }
+
+    public Human(String name, String surname, int year, int iq, String[][] schedule) {
+        this.name = name;
+        this.surname = surname;
+        b_year = year;
+        this.iq = iq;
+        this.schedule = schedule;
+    }
+
+    public Human() {
     }
 
     public void greetPet() {
@@ -29,7 +39,7 @@ public class Human {
         this.name = name;
     }
 
-    public String getName(){
+    public String getName() {
         return name;
     }
 
@@ -48,26 +58,6 @@ public class Human {
     public void setFamily(Family family) {
         this.family = family;
     }
-
-    public Human(String name, String surname, int year, int iq, String[][] schedule, Family family){
-        this.name = name;
-        this.surname = surname;
-        b_year = year;
-        this.iq = iq;
-        this.schedule = schedule;
-        this.family = family;
-    }
-
-    public Human(String name, String surname, int year, int iq, String[][] schedule){
-        this.name = name;
-        this.surname = surname;
-        b_year = year;
-        this.iq = iq;
-        this.schedule = schedule;
-    }
-    public Human(){}
-
-
 
     @Override
     public String toString() {
