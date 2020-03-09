@@ -86,4 +86,10 @@ public class Main {
 
         }
     }
+
+    @Override
+    protected void finalize() throws Throwable {
+        System.out.println("Object is deleted");
+
+    }
 }
