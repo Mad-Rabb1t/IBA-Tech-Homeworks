@@ -4,7 +4,7 @@ public class DomesticCat extends Pet implements Foul {
 
     public DomesticCat(String nickname, int age, int trickLevel, String[] habits) {
         super(nickname, age, trickLevel, habits);
-        super.species = Enum.species.DomesticCat;
+        super.species = Species.DomesticCat;
     }
 
     @Override

@@ -4,14 +4,14 @@ import java.util.Arrays;
 
 public abstract class Pet {
 
-    protected Enum.species species;
+    protected Species species;
     protected String nickname;
     protected int age;
     protected int trickLevel;
     protected String[] habits;
 
     public Pet(String nickname, int age, int trickLevel, String[] habits) {
-        this.species = Enum.species.Unknown;
+        this.species = Species.Unknown;
         this.nickname = nickname;
         this.age = age;
         this.trickLevel = trickLevel;
@@ -21,7 +21,7 @@ public abstract class Pet {
     public Pet() {
     }
 
-    public Enum.species getSpecies() {
+    public Species getSpecies() {
         return this.species;
     }
 

@@ -8,19 +8,19 @@ public class Main {
         //schedule
         String[][] event = new String[7][2];
 
-        event[0][0] = Enum.DayOfTheWeek.Sunday.name();
+        event[0][0] = DayOfTheWeek.Sunday.name();
         event[0][1] = "Do the homework";
-        event[1][0] = Enum.DayOfTheWeek.Monday.name();
+        event[1][0] = DayOfTheWeek.Monday.name();
         event[1][1] = "Go to courses, watch a film";
-        event[2][0] = Enum.DayOfTheWeek.Tuesday.name();
+        event[2][0] = DayOfTheWeek.Tuesday.name();
         event[2][1] = "Hang out with friends";
-        event[3][0] = Enum.DayOfTheWeek.Wednesday.name();
+        event[3][0] = DayOfTheWeek.Wednesday.name();
         event[3][1] = "Do the workout";
-        event[4][0] = Enum.DayOfTheWeek.Thursday.name();
+        event[4][0] = DayOfTheWeek.Thursday.name();
         event[4][1] = "Play PS4";
-        event[5][0] = Enum.DayOfTheWeek.Friday.name();
+        event[5][0] = DayOfTheWeek.Friday.name();
         event[5][1] = "Go to the cinema";
-        event[6][0] = Enum.DayOfTheWeek.Saturday.name();
+        event[6][0] = DayOfTheWeek.Saturday.name();
         event[6][1] = "Date a girl";
         //
         Pet pet1 = new Dog("Chop", 5, 75, habits);
@@ -32,7 +32,7 @@ public class Main {
         Human dad1 = new Man("Michael", "Townley", 1965, 83, event);
         Human mom1 = new Woman("Amanda", "Townley", 1969, 74, event);
         Family fam1 = new Family(dad1, mom1, pet1);
-        Human cld1 = new Man("Jimmy", "Townley", 1991, 45, event, fam1);
+        Man cld1 = new Man("Jimmy", "Townley", 1991, 45, event, fam1);
         fam1.addChild(cld1);
 
         Human dad2 = new Man("Lester", "Crest", 1969, 100, event);
@@ -44,7 +44,7 @@ public class Main {
         Human dad3 = new Man("Samuel", "Jackson", 1999, 82, event);
         Human mom3 = new Woman("Samantha", "Jackson", 2000, 54, event);
         Family fam3 = new Family(dad3, mom3, pet3);
-        Human cld3 = new Woman("Susan", "Jackson", 2019, 4, event);
+        Woman cld3 = new Woman("Susan", "Jackson", 2019, 4, event);
         fam3.addChild(cld3);
         fam3.addChild(cld1);
         fam3.deleteChild(cld1);
@@ -52,7 +52,7 @@ public class Main {
 
         System.out.println(fam1.toString());
         System.out.printf("Our family consists of %d members\n", fam1.countFamily());
-        ((Man) cld1).repairCar();
+        cld1.repairCar();
         fam1.describePet();
         cld1.greetPet();
         pet1.respond();
@@ -69,7 +69,7 @@ public class Main {
 
         System.out.println(fam3.toString());
         System.out.printf("Our family consists of %d members\n", fam3.countFamily());
-        ((Woman) cld3).makeup();
+        cld3.makeup();
         fam3.describePet();
         cld3.greetPet();
         pet3.respond();

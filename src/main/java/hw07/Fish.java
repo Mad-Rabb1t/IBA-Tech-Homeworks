@@ -4,7 +4,7 @@ public class Fish extends Pet {
 
     public Fish(String nickname, int age, int trickLevel, String[] habits) {
         super(nickname, age, trickLevel, habits);
-        super.species = Enum.species.Fish;
+        super.species = Species.Fish;
     }
 
     @Override
