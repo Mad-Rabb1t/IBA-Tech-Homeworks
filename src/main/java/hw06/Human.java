@@ -11,17 +11,6 @@ public class Human {
     private String[][] schedule;
     private Family family;
 
-    public enum DayOfTheWeek {
-        Friday,
-        Monday,
-        Saturday,
-        Sunday,
-        Thursday,
-        Tuesday,
-        Wednesday
-
-    }
-
     public Human(String name, String surname, int year, int iq, String[][] schedule, Family family) {
         this.name = name;
         this.surname = surname;

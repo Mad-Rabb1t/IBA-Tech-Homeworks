@@ -10,30 +10,30 @@ public class Main {
             String[][] event = new String[7][2];
 
 
-            event[0][0] = Human.DayOfTheWeek.Sunday.name();
+            event[0][0] = DayOfTheWeek.Sunday.name();
             event[0][1] = "Do the homework";
-            event[1][0] = Human.DayOfTheWeek.Monday.name();
+            event[1][0] = DayOfTheWeek.Monday.name();
             event[1][1] = "Go to courses, watch a film";
-            event[2][0] = Human.DayOfTheWeek.Tuesday.name();
+            event[2][0] = DayOfTheWeek.Tuesday.name();
             event[2][1] = "Hang out with friends";
-            event[3][0] = Human.DayOfTheWeek.Wednesday.name();
+            event[3][0] = DayOfTheWeek.Wednesday.name();
             event[3][1] = "Do the workout";
-            event[4][0] = Human.DayOfTheWeek.Thursday.name();
+            event[4][0] = DayOfTheWeek.Thursday.name();
             event[4][1] = "Play PS4";
-            event[5][0] = Human.DayOfTheWeek.Friday.name();
+            event[5][0] = DayOfTheWeek.Friday.name();
             event[5][1] = "Go to the cinema";
-            event[6][0] = Human.DayOfTheWeek.Saturday.name();
+            event[6][0] = DayOfTheWeek.Saturday.name();
             event[6][1] = "Date a girl";
             //
-            Pet pet1 = new Pet(Pet.species.Dog, "chop");
+            Pet pet1 = new Pet(Species.Dog, "chop");
             Pet pet2 = new Pet();
             pet1.setHabits(habits);
             pet1.setAge(6);
-            pet2.setSpecies(Pet.species.Hamster);
+            pet2.setSpecies(Species.Hamster);
             pet2.setNickname("Goofy");
             pet2.setAge(4);
             pet2.setHabits(habits);
-            Pet pet3 = new Pet(Pet.species.Cat, "Stinger", 6, 80, habits);
+            Pet pet3 = new Pet(Species.Cat, "Stinger", 6, 80, habits);
 
 
             Human dad1 = new Human();

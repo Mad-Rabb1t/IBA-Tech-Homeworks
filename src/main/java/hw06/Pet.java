@@ -3,28 +3,24 @@ package hw06;
 import java.util.Arrays;
 
 public class Pet {
-    public enum species {
-        Dog,
-        Cat,
-        Hamster
-    }
 
-    private Pet.species species;
+
+    private Species species;
     private String nickname;
     private int age;
     private int trickLevel;
     private String[] habits;
 
-    public Pet.species getSpecies() {
+    public Species getSpecies() {
         return this.species;
     }
 
-    public Pet(Pet.species species, String nickname) {
+    public Pet(Species species, String nickname) {
         this.species = species;
         this.nickname = nickname;
     }
 
-    public Pet(Pet.species species, String nickname, int age, int trickLevel, String[] habits) {
+    public Pet(Species species, String nickname, int age, int trickLevel, String[] habits) {
         this.species = species;
         this.nickname = nickname;
         this.age = age;
@@ -35,7 +31,7 @@ public class Pet {
     public Pet() {
     }
 
-    public void setSpecies(species species) {
+    public void setSpecies(Species species) {
         this.species = species;
     }
 

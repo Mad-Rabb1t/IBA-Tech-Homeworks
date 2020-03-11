@@ -111,12 +111,7 @@ public class Family {
     }
 
     public int countFamily() {
-        int count = 0;
-        for (int i = 0; i < children.length - 1; i++) {
-            if (children[i] != null)
-                count++;
-        }
-        return count + 2;
+        return children.length + 2;
     }
 
     @Override
