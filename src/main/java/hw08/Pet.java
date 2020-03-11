@@ -1,6 +1,5 @@
 package hw08;
 
-//import java.util.Arrays;
 import java.util.HashSet;
 
 public abstract class Pet {

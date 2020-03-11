@@ -48,14 +48,6 @@ public class Human {
         return family;
     }
 
-//    public void setSurname(String surname) {
-//        this.surname = surname;
-//    }
-//
-//    public void setB_year(int b_year) {
-//        this.b_year = b_year;
-//    }
-
     public void setFamily(Family family) {
         this.family = family;
     }

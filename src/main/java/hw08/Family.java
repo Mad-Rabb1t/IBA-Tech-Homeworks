@@ -20,22 +20,6 @@ public class Family {
         mother.setFamily(this);
     }
 
-//    public Human getFather() {
-//        return father;
-//    }
-
-//    public void setFather(Human father) {
-//        this.father = father;
-//    }
-
-//    public Human getMother() {
-//        return mother;
-//    }
-
-//    public void setMother(Human mother) {
-//        this.mother = mother;
-//    }
-
     public HashSet<Pet> getPet() {
         return pets;
     }
@@ -44,17 +28,8 @@ public class Family {
         this.pets.add(pet);
     }
 
-//    public Human[] getChildren() {
-//        return children;
-//    }
-//
-//    public void setChildren(Human[] children) {
-//        this.children = children;
-//    }
-
-
     public void describePet() {
-        for (Pet pet: pets){
+        for (Pet pet : pets) {
             System.out.printf("I have a %s, he is %d years old, he is ", pet.getSpecies(), pet.getAge());
             if (pet.getTrickLevel() < 50) System.out.println("almost not sly.");
             else System.out.println("very sly");
@@ -69,7 +44,7 @@ public class Family {
     public boolean deleteChild(int index) {
         try {
             children.remove(index);
-        } catch (Exception ex){
+        } catch (Exception ex) {
             return false;
         }
         return true;
