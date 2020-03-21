@@ -81,19 +81,12 @@ public class Main {
         FamilyController controller = new FamilyController();
 
         controller.bornChild(fam3, "Girl", "Sofia");
-        controller.getAllFamilies();
         controller.createNewFamily(new Man("James", "Browning"), new Woman("Natalie", "Browning"));
-        controller.displayAllFamilies();
-        controller.getFamiliesBiggerThan(2);
-        controller.getFamiliesLessThan(4);
-        controller.countFamiliesWithMemberNumber(2);
+
         controller.deleteFamilyByIndex(1);
         controller.adoptChild(fam1, new Man("Jerry", "Armstrong"));
         controller.deleteAllChildrenOlderThan(18);
-        controller.count();
-        controller.getFamilyById(0);
-        controller.addPet(0, pet4);
-        System.out.println(controller.getPets(0));
+        controller.displayAllFamilies();
     }
 }
 
