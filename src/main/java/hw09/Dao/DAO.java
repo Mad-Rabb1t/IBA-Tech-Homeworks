@@ -1,8 +1,10 @@
-package hw09;
+package hw09.Dao;
+
+import hw09.Entities.Family;
 
 import java.util.ArrayList;
 
-interface DAO<E> {
+public interface DAO<E> {
     ArrayList<E> getAllFamilies();
     E getFamilyByIndex(int index);
     boolean deleteFamily(int index);

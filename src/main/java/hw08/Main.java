@@ -1,6 +1,7 @@
 package hw08;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 
@@ -29,19 +30,19 @@ public class Main {
 
         Human dad1 = new Man("Michael", "Townley", 1965, 83, event);
         Human mom1 = new Woman("Amanda", "Townley", 1969, 74, event);
-        Family fam1 = new Family(dad1, mom1, pet1);
+        Family fam1 = new Family(dad1, mom1, new HashSet<>(Arrays.asList(pet1,pet4)));
         Man cld1 = new Man("Jimmy", "Townley", 1991, 45, event, fam1);
         fam1.addChild(cld1);
 
         Human dad2 = new Man("Lester", "Crest", 1969, 100, event);
         Human mom2 = new Woman("Paige", "Harris", 1981, 92, event);
-        Family fam2 = new Family(dad2, mom2, pet2);
+        Family fam2 = new Family(dad2, mom2, new HashSet<>(Collections.singletonList(pet2)));
         Human cld2 = new Woman("Olivia", "Crest", 2005, 15, event);
         fam2.addChild(cld2);
 
         Human dad3 = new Man("Samuel", "Jackson", 1999, 82, event);
         Human mom3 = new Woman("Samantha", "Jackson", 2000, 54, event);
-        Family fam3 = new Family(dad3, mom3, pet3);
+        Family fam3 = new Family(dad3, mom3, new HashSet<>(Collections.singletonList(pet3)));
         Woman cld3 = new Woman("Susan", "Jackson", 2019, 4, event);
         fam3.addChild(cld3);
         fam3.addChild(cld1);

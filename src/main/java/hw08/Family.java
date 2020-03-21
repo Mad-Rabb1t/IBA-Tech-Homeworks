@@ -1,21 +1,19 @@
 package hw08;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Objects;
 
 public class Family {
     private Human mother;
     private Human father;
-    private ArrayList<Human> children;
-    private Integer cld_index = 0;
+    private ArrayList<Human> children = new ArrayList<>();
     protected HashSet<Pet> pets;
 
-    public Family(Human father, Human mother, Pet pet) {
+    public Family(Human father, Human mother, HashSet<Pet> pets) {
         this.father = father;
         this.mother = mother;
-        this.pets.add(pet);
+        this.pets = pets;
         father.setFamily(this);
         mother.setFamily(this);
     }

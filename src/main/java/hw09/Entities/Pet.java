@@ -1,6 +1,8 @@
-package hw09;
+package hw09.Entities;
 
 
+
+import hw09.Entities.Species;
 
 import java.util.HashSet;
 

@@ -1,4 +1,4 @@
-package hw09;
+package hw09.Entities;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -10,10 +10,10 @@ public class Family {
     private ArrayList<Human> children = new ArrayList<>();
     protected HashSet<Pet> pets = new HashSet<>();
 
-    public Family(Human father, Human mother, Pet pet) {
+    public Family(Human father, Human mother, HashSet<Pet> pets) {
         this.father = father;
         this.mother = mother;
-        this.pets.add(pet);
+        this.pets = pets;
         father.setFamily(this);
         mother.setFamily(this);
     }
@@ -94,11 +94,5 @@ public class Family {
     @Override
     public int hashCode() {
         return Objects.hash(mother, father);
-    }
-
-    @Override
-    protected void finalize() throws Throwable {
-        System.out.println("Family has been deleted...");
-        super.finalize();
     }
 }

@@ -1,4 +1,9 @@
-package hw09;
+package hw09.Controller;
+
+import hw09.Entities.Family;
+import hw09.Service.FamilyService;
+import hw09.Entities.Human;
+import hw09.Entities.Pet;
 
 import java.util.ArrayList;
 

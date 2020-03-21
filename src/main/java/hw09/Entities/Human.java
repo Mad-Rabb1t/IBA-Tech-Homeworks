@@ -1,4 +1,4 @@
-package hw09;
+package hw09.Entities;
 
 
 import java.util.HashMap;
@@ -44,6 +44,14 @@ public class Human {
         return name;
     }
 
+    public String getSurname(){
+        return surname;
+    }
+
+    public int getB_year() {
+        return b_year;
+    }
+
     public Family getFamily() {
         return family;
     }
@@ -70,11 +78,5 @@ public class Human {
     @Override
     public int hashCode() {
         return Objects.hash(name, surname, b_year);
-    }
-
-    @Override
-    protected void finalize() throws Throwable {
-        System.out.println("Human has been deleted...");
-        super.finalize();
     }
 }

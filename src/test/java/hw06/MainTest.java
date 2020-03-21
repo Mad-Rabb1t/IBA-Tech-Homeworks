@@ -8,7 +8,7 @@ public class MainTest {
 
     @Test
     void stringTest(){
-        Pet max = new Pet(Pet.species.Dog, "Max", 7, 81, new String[]{"play", "bite", "bark"});
+        Pet max = new Pet(Species.Dog, "Max", 7, 81, new String[]{"play", "bite", "bark"});
         String actual = max.toString();
         String expected = "Dog{nickname = Max, age = 7,trickLevel=81,habits = [play, bite, bark]\n";
         assertEquals(expected,actual);
