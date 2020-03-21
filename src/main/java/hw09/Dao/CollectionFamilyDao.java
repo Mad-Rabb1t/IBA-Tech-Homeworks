@@ -1,4 +1,6 @@
-package hw09;
+package hw09.Dao;
+
+import hw09.Entities.Family;
 
 import java.util.ArrayList;
 
@@ -45,7 +47,7 @@ public class CollectionFamilyDao implements DAO<Family>{
         for (int i =0; i < families.size(); i++) {
             if(families.get(i).hashCode()==fam.hashCode()){
                 if(families.get(i).equals(fam)){
-                    families.add(i,fam);
+                    families.set(i,fam);
                     familyFound = true;
                 }
             }

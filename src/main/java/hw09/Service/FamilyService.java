@@ -1,4 +1,8 @@
-package hw09;
+package hw09.Service;
+
+import hw09.Dao.CollectionFamilyDao;
+import hw09.Dao.DAO;
+import hw09.Entities.*;
 
 import java.util.ArrayList;
 
@@ -60,14 +64,14 @@ public class FamilyService {
             case ("feminine"):
 
             case ("girl"): {
-                fam.addChild(new Woman(cld_name, fam.getFather().surname, fam));
+                fam.addChild(new Woman(cld_name, fam.getFather().getSurname(), fam));
                 break;
             }
 
             case ("masculine"):
 
             case ("boy"): {
-                fam.addChild(new Man(cld_name, fam.getFather().surname, fam));
+                fam.addChild(new Man(cld_name, fam.getFather().getSurname(), fam));
                 break;
             }
 
@@ -89,7 +93,7 @@ public class FamilyService {
     public void deleteAllChildrenOlderThan(int age) {
         for (Family fam : dao.getAllFamilies()) {
             for (int i = 0; i < fam.getChildren().size(); i++) {
-                if (2020 - fam.getChildren().get(i).b_year > age) fam.deleteChild(i);
+                if (2020 - fam.getChildren().get(i).getB_year() > age) fam.deleteChild(i);
             }
             dao.saveFamily(fam);
         }
