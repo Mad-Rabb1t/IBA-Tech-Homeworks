@@ -2,7 +2,6 @@ package hw11.Entities;
 
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
@@ -11,21 +10,21 @@ import java.util.Objects;
 public class Human {
     protected String name;
     protected String surname;
-    protected LocalDateTime birthDate;
+    protected LocalDate birthDate; //= LocalDate.parse("01/01/1900",DateTimeFormatter.ofPattern("dd/MM/yyyy"));
     protected int iq;
     protected HashMap<String,String> schedule;
     protected Family family;
 
-    public Human(String name, String surname, LocalDateTime birthDate, int iq, HashMap<String,String> schedule, Family family) {
+    public Human(String name, String surname, LocalDate year, int iq, HashMap<String,String> schedule, Family family) {
         this.name = name;
         this.surname = surname;
-        this.birthDate = birthDate;
+        birthDate = year;
         this.iq = iq;
         this.schedule = schedule;
         this.family = family;
     }
 
-    public Human(String name, String surname, LocalDateTime year, int iq, HashMap<String,String> schedule) {
+    public Human(String name, String surname, LocalDate year, int iq, HashMap<String,String> schedule) {
         this.name = name;
         this.surname = surname;
         birthDate = year;
@@ -36,7 +35,11 @@ public class Human {
     public Human(String name, String surname, String date, int iq){
         this.name = name;
         this.surname = surname;
-        birthDate = LocalDateTime.parse(date, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        try {
+            this.birthDate = LocalDate.parse(date, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        } catch (IllegalArgumentException ex){
+            ex.printStackTrace();
+        }
         this.iq = iq;
     }
 
@@ -59,7 +62,7 @@ public class Human {
         return surname;
     }
 
-    public LocalDateTime getBirthDate() {
+    public LocalDate getBirthDate() {
         return birthDate;
     }
 
@@ -71,13 +74,14 @@ public class Human {
         this.family = family;
     }
 
-    public String describeAge(){
-        Period age = Period.between(birthDate.toLocalDate(),LocalDate.now());
-        return String.format("%s %s is %d years, %d months and %d days old.", name, surname, age.getYears(), age.getMonths(),age.getDays());
+    public int getAge(){
+        return Period.between(birthDate,LocalDate.now()).getYears();
     }
 
-    public int getAge(){
-        return Period.between(birthDate.toLocalDate(),LocalDate.now()).getYears();
+    public String describeAge(){
+        Period age = Period.between(birthDate,LocalDate.now());
+        return String.format("%s %s is %d years, %d months and %d days old.", name, surname,
+                age.getYears(), age.getMonths(),age.getDays());
     }
 
     @Override

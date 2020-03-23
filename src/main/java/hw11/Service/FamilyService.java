@@ -4,7 +4,9 @@ import hw11.Dao.CollectionFamilyDao;
 import hw11.Dao.DAO;
 import hw11.Entities.*;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 public class FamilyService {
     DAO<Family> dao = new CollectionFamilyDao();
@@ -14,37 +16,23 @@ public class FamilyService {
     }
 
     public void displayAllFamilies() {
+        System.out.println("Families: ");
         dao.getAllFamilies().forEach(System.out::println);
     }
 
     public ArrayList<Family> getFamiliesBiggerThan(int size) {
-        ArrayList<Family> biggers = new ArrayList<>();
-        for (Family fam : dao.getAllFamilies()) {
-            if (fam.countFamily() > size) {
-                biggers.add(fam);
-            }
-        }
-        return biggers;
+        return (ArrayList<Family>) dao.getAllFamilies().stream().filter(family -> family.countFamily() > size)
+                .collect(Collectors.toList());
     }
 
     public ArrayList<Family> getFamiliesLessThan(int size) {
-        ArrayList<Family> smallers = new ArrayList<>();
-        for (Family fam : dao.getAllFamilies()) {
-            if (fam.countFamily() < size) {
-                smallers.add(fam);
-            }
-        }
-        return smallers;
+        return (ArrayList<Family>) dao.getAllFamilies().stream().filter(family -> family.countFamily() < size)
+                .collect(Collectors.toList());
     }
 
     public ArrayList<Family> countFamiliesWithMemberNumber(int size) {
-        ArrayList<Family> equals = new ArrayList<>();
-        for (Family fam : dao.getAllFamilies()) {
-            if (fam.countFamily() == size) {
-                equals.add(fam);
-            }
-        }
-        return equals;
+        return (ArrayList<Family>) dao.getAllFamilies().stream().filter(family -> family.countFamily() == size)
+                .collect(Collectors.toList());
     }
 
     public void createNewFamily(Human dad, Human mom) {
@@ -64,14 +52,14 @@ public class FamilyService {
             case ("feminine"):
 
             case ("girl"): {
-                fam.addChild(new Woman(cld_name, fam.getFather().getSurname(), fam));
+                fam.addChild(new Woman(cld_name, fam.getFather().getSurname(), LocalDate.now(), fam));
                 break;
             }
 
             case ("masculine"):
 
             case ("boy"): {
-                fam.addChild(new Man(cld_name, fam.getFather().getSurname(), fam));
+                fam.addChild(new Man(cld_name, fam.getFather().getSurname(), LocalDate.now(), fam));
                 break;
             }
 
@@ -91,12 +79,7 @@ public class FamilyService {
     }
 
     public void deleteAllChildrenOlderThan(int age) {
-        for (Family fam : dao.getAllFamilies()) {
-            for (int i = 0; i < fam.getChildren().size(); i++) {
-                if (fam.getChildren().get(i).getAge() > age) fam.deleteChild(i);
-            }
-            dao.saveFamily(fam);
-        }
+        dao.getAllFamilies().forEach(family -> family.getChildren().removeIf(human -> human.getAge() > age));
     }
 
     public int count() {
