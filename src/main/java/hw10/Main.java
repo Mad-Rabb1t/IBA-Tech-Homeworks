@@ -3,6 +3,8 @@ package hw10;
 import hw10.Controller.FamilyController;
 import hw10.Entities.*;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
@@ -30,23 +32,23 @@ public class Main {
         Pet pet3 = new DomesticCat("Stinger", 3, 45, habits);
         Pet pet4 = new Fish("Nemo", 1, 10, new HashSet<>(Arrays.asList("Stare", "Eat", "Forget")));
 
-
-        Human dad1 = new Man("Michael", "Townley", "30/10/1965", 83, event);
-        Human mom1 = new Woman("Amanda", "Townley", "11/12/1969", 74, event);
+        DateTimeFormatter form = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        Human dad1 = new Man("Michael", "Townley", LocalDate.parse("30/10/1965",form), 83, event);
+        Human mom1 = new Woman("Amanda", "Townley", LocalDate.parse("11/12/1969",form), 74, event);
         Family fam1 = new Family(dad1, mom1, new HashSet<>(Arrays.asList(pet1, pet4)));
-        Man cld1 = new Man("Jimmy", "Townley", "20/02/1991", 45, event, fam1);
+        Man cld1 = new Man("Jimmy", "Townley", LocalDate.parse("20/02/1991",form), 45, event, fam1);
         fam1.addChild(cld1);
 
-        Human dad2 = new Man("Lester", "Crest", "05/03/1969", 100, event);
-        Human mom2 = new Woman("Paige", "Harris", "12/06/1981", 92, event);
+        Human dad2 = new Man("Lester", "Crest", LocalDate.parse("05/03/1969",form), 100, event);
+        Human mom2 = new Woman("Paige", "Harris", LocalDate.parse("12/06/1981",form), 92, event);
         Family fam2 = new Family(dad2, mom2, new HashSet<>(Collections.singletonList(pet2)));
-        Human cld2 = new Woman("Olivia", "Crest", "12/11/2005", 15, event);
+        Human cld2 = new Woman("Olivia", "Crest", LocalDate.parse("12/11/2005",form), 15, event);
         fam2.addChild(cld2);
 
-        Human dad3 = new Man("Samuel", "Jackson", "10/10/1999", 82, event);
-        Human mom3 = new Woman("Samantha", "Jackson", "20/04/2000", 54, event);
+        Human dad3 = new Man("Samuel", "Jackson", LocalDate.parse("10/10/1999", form), 82, event);
+        Human mom3 = new Woman("Samantha", "Jackson", LocalDate.parse("20/04/2000",form), 54, event);
         Family fam3 = new Family(dad3, mom3, new HashSet<>(Collections.singletonList(pet3)));
-        Woman cld3 = new Woman("Susan", "Jackson", "05/04/2019", 4, event);
+        Woman cld3 = new Woman("Susan", "Jackson", LocalDate.parse("05/04/2019",form), 4, event);
         fam3.addChild(cld3);
         fam3.addChild(cld1);
         fam3.deleteChild(cld1);
@@ -81,12 +83,14 @@ public class Main {
         FamilyController controller = new FamilyController();
 
         controller.bornChild(fam3, "Girl", "Sofia");
-        controller.createNewFamily(new Man("James", "Browning"), new Woman("Natalie", "Browning"));
+        controller.createNewFamily(new Man("James", "Browning", "12/04/1991", 81),
+                new Woman("Natalie", "Browning", "14/12/1995", 70));
 
         controller.deleteFamilyByIndex(1);
-        controller.adoptChild(fam1, new Man("Jerry", "Armstrong"));
+        controller.adoptChild(fam1, new Man("Jerry", "Armstrong", "13/10/2012", 20));
         controller.deleteAllChildrenOlderThan(18);
         controller.displayAllFamilies();
+        System.out.println(cld3.describeAge());
     }
 }
 

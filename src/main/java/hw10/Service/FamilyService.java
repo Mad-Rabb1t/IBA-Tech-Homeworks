@@ -4,6 +4,7 @@ import hw10.Dao.CollectionFamilyDao;
 import hw10.Dao.DAO;
 import hw10.Entities.*;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class FamilyService {
@@ -64,14 +65,14 @@ public class FamilyService {
             case ("feminine"):
 
             case ("girl"): {
-                fam.addChild(new Woman(cld_name, fam.getFather().getSurname(), fam));
+                fam.addChild(new Woman(cld_name, fam.getFather().getSurname(), LocalDate.now(), fam));
                 break;
             }
 
             case ("masculine"):
 
             case ("boy"): {
-                fam.addChild(new Man(cld_name, fam.getFather().getSurname(), fam));
+                fam.addChild(new Man(cld_name, fam.getFather().getSurname(), LocalDate.now(), fam));
                 break;
             }
 
