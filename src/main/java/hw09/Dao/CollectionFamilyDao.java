@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class CollectionFamilyDao implements DAO<Family>{
 
-    ArrayList<Family> families = new ArrayList<>();
+    private ArrayList<Family> families = new ArrayList<>();
 
 
     @Override
@@ -25,9 +25,8 @@ public class CollectionFamilyDao implements DAO<Family>{
             return true;
         }
         catch (Exception ex) {
-            System.out.println("Unable to delete family!");
+            throw new IllegalArgumentException("Unable to delete family!");
         }
-        return false;
     }
 
     @Override
@@ -36,25 +35,17 @@ public class CollectionFamilyDao implements DAO<Family>{
             families.remove(fam);
             return true;
         } catch (Exception ex){
-            System.out.println("Unable to delete family!");
+            throw new IllegalArgumentException("Unable to delete family!");
         }
-        return false;
     }
 
     @Override
     public void saveFamily(Family fam) {
-        boolean familyFound = false;
-        for (int i =0; i < families.size(); i++) {
-            if(families.get(i).hashCode()==fam.hashCode()){
-                if(families.get(i).equals(fam)){
-                    families.set(i,fam);
-                    familyFound = true;
-                }
-            }
-        }
-        if(!familyFound){
+        int index = families.indexOf(fam);
+        if(index != -1){
+            families.set(index,fam);
+        } else{
             families.add(fam);
         }
-
     }
 }

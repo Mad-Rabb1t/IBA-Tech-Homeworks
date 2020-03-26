@@ -27,7 +27,7 @@ public class FamilyController {
         return serv.getFamiliesLessThan(size);
     }
 
-    public ArrayList<Family> countFamiliesWithMemberNumber(int size) {
+    public int countFamiliesWithMemberNumber(int size) {
         return serv.countFamiliesWithMemberNumber(size);
     }
 
@@ -36,11 +36,17 @@ public class FamilyController {
     }
 
     public boolean deleteFamilyByIndex(int index) {
-        return serv.deleteFamilyByIndex(index);
+        try{
+            serv.deleteFamilyByIndex(index);
+            return true;
+        } catch (IllegalArgumentException ex) {
+            ex.getMessage();
+            return false;
+        }
     }
 
-    public Family bornChild(Family fam, String gender, String cld_name) {
-        return serv.bornChild(fam, gender, cld_name);
+    public Family bornChild(Family fam, String boy_name, String girl_name) {
+        return serv.bornChild(fam, boy_name, girl_name);
     }
 
     public Family adoptChild(Family fam, Human cld) {

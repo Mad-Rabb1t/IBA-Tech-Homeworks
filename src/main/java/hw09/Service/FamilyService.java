@@ -37,11 +37,11 @@ public class FamilyService {
         return smallers;
     }
 
-    public ArrayList<Family> countFamiliesWithMemberNumber(int size) {
-        ArrayList<Family> equals = new ArrayList<>();
+    public int countFamiliesWithMemberNumber(int size) {
+        int equals = 0;
         for (Family fam : dao.getAllFamilies()) {
             if (fam.countFamily() == size) {
-                equals.add(fam);
+                equals++;
             }
         }
         return equals;
@@ -58,25 +58,19 @@ public class FamilyService {
         return dao.deleteFamily(index);
     }
 
-    public Family bornChild(Family fam, String gender, String cld_name) {
-        gender = gender.toLowerCase().trim();
-        switch (gender) {
-            case ("feminine"):
+    public Family bornChild(Family fam, String boy_name, String girl_name) {
 
-            case ("girl"): {
-                fam.addChild(new Woman(cld_name, fam.getFather().getSurname(), fam));
+        int chance = (int) (Math.random()+1);
+        switch (chance) {
+            case (0): {
+                fam.addChild(new Woman(girl_name, fam.getFather().getSurname(), fam));
                 break;
             }
 
-            case ("masculine"):
-
-            case ("boy"): {
-                fam.addChild(new Man(cld_name, fam.getFather().getSurname(), fam));
+            case (1): {
+                fam.addChild(new Man(boy_name, fam.getFather().getSurname(), fam));
                 break;
             }
-
-            default:
-                System.out.println("Unable to create a child! Please enter valid parameters");
         }
 
         dao.saveFamily(fam);

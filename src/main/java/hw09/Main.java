@@ -80,7 +80,7 @@ public class Main {
 
         FamilyController controller = new FamilyController();
 
-        controller.bornChild(fam3, "Girl", "Sofia");
+        controller.bornChild(fam3, "Sam", "Sofia");
         controller.createNewFamily(new Man("James", "Browning"), new Woman("Natalie", "Browning"));
 
         controller.deleteFamilyByIndex(1);
