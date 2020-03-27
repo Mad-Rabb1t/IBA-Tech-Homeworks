@@ -1,16 +1,19 @@
 package hw10.Entities;
 
 
+import java.time.Instant;
 import java.time.LocalDate;
 import java.time.Period;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Objects;
 
 public class Human {
     protected String name;
     protected String surname;
-    protected LocalDate birthDate; //= LocalDate.parse("01/01/1900",DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+    protected long birthDate; //= LocalDate.parse("01/01/1900",DateTimeFormatter.ofPattern("dd/MM/yyyy"));
     protected int iq;
     protected HashMap<String,String> schedule;
     protected Family family;
@@ -18,7 +21,7 @@ public class Human {
     public Human(String name, String surname, LocalDate year, int iq, HashMap<String,String> schedule, Family family) {
         this.name = name;
         this.surname = surname;
-        birthDate = year;
+        birthDate = Date.from(year.atStartOfDay(ZoneId.systemDefault()).toInstant()).getTime();
         this.iq = iq;
         this.schedule = schedule;
         this.family = family;
@@ -27,7 +30,7 @@ public class Human {
     public Human(String name, String surname, LocalDate year, int iq, HashMap<String,String> schedule) {
         this.name = name;
         this.surname = surname;
-        birthDate = year;
+        birthDate = Date.from(year.atStartOfDay(ZoneId.systemDefault()).toInstant()).getTime();
         this.iq = iq;
         this.schedule = schedule;
     }
@@ -36,7 +39,8 @@ public class Human {
         this.name = name;
         this.surname = surname;
         try {
-            this.birthDate = LocalDate.parse(date, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+            this.birthDate = Date.from(LocalDate.parse(date, DateTimeFormatter.ofPattern("dd/MM/yyyy"))
+                    .atStartOfDay(ZoneId.systemDefault()).toInstant()).getTime();
         } catch (IllegalArgumentException ex){
             ex.printStackTrace();
         }
@@ -62,7 +66,7 @@ public class Human {
         return surname;
     }
 
-    public LocalDate getBirthDate() {
+    public long getBirthDate() {
         return birthDate;
     }
 
@@ -75,11 +79,13 @@ public class Human {
     }
 
     public int getAge(){
-        return Period.between(birthDate,LocalDate.now()).getYears();
+        return Period.between(Instant.ofEpochSecond(birthDate).atZone(ZoneId.systemDefault()).toLocalDate(),
+                LocalDate.now()).getYears();
     }
 
     public String describeAge(){
-        Period age = Period.between(birthDate,LocalDate.now());
+        Period age = Period.between(Instant.ofEpochSecond(birthDate).atZone(ZoneId.systemDefault()).toLocalDate(),
+                LocalDate.now());
         return String.format("%s %s is %d years, %d months and %d days old.", name, surname,
                 age.getYears(), age.getMonths(),age.getDays());
     }
@@ -87,7 +93,8 @@ public class Human {
     @Override
     public String toString() {
         return String.format("Human{name='%s', surname='%s', date of birth = %s, iq=%d, schedule=%s}", name, surname,
-                birthDate.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")), iq, schedule);
+                Instant.ofEpochSecond(birthDate).atZone(ZoneId.systemDefault()).toLocalDate()
+                        .format(DateTimeFormatter.ofPattern("dd/MM/yyyy")), iq, schedule);
     }
 
     @Override
