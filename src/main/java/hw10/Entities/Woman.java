@@ -38,7 +38,7 @@ public final class Woman extends Human {
     @Override
     public String toString() {
         return String.format("Woman{name='%s', surname='%s', date of birth = %s, iq=%d}", super.name, super.surname,
-                Instant.ofEpochSecond(super.birthDate).atZone(ZoneId.systemDefault()).toLocalDate()
+                Instant.ofEpochMilli(super.birthDate).atZone(ZoneId.systemDefault()).toLocalDate()
                         .format(DateTimeFormatter.ofPattern("dd/MM/yyyy")), super.iq);
     }
 

@@ -93,7 +93,7 @@ public class Human {
     @Override
     public String toString() {
         return String.format("Human{name='%s', surname='%s', date of birth = %s, iq=%d, schedule=%s}", name, surname,
-                Instant.ofEpochSecond(birthDate).atZone(ZoneId.systemDefault()).toLocalDate()
+                Instant.ofEpochMilli(birthDate).atZone(ZoneId.systemDefault()).toLocalDate()
                         .format(DateTimeFormatter.ofPattern("dd/MM/yyyy")), iq, schedule);
     }
 
