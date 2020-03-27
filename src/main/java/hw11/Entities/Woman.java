@@ -1,8 +1,11 @@
 package hw11.Entities;
 
 
+import java.time.Instant;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.HashMap;
 
 public final class Woman extends Human {
@@ -24,7 +27,7 @@ public final class Woman extends Human {
         super.name = name;
         super.surname = surname;
         super.family = family;
-        super.birthDate = date;
+        super.birthDate = Date.from(date.atStartOfDay(ZoneId.systemDefault()).toInstant()).getTime();
     }
 
     @Override
@@ -35,7 +38,8 @@ public final class Woman extends Human {
     @Override
     public String toString() {
         return String.format("Woman{name='%s', surname='%s', date of birth = %s, iq=%d}", super.name, super.surname,
-                super.birthDate.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")), super.iq);
+                Instant.ofEpochMilli(super.birthDate).atZone(ZoneId.systemDefault()).toLocalDate()
+                        .format(DateTimeFormatter.ofPattern("dd/MM/yyyy")), super.iq);
     }
 
     public void makeup() {

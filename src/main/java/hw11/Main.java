@@ -82,7 +82,7 @@ public class Main {
 
         FamilyController controller = new FamilyController();
 
-        controller.bornChild(fam3, "Girl", "Sofia");
+        controller.bornChild(fam3, "Sam", "Sofia");
         controller.createNewFamily(new Man("James", "Browning", "12/04/1991", 81),
                 new Woman("Natalie", "Browning", "14/12/1995", 70));
 
