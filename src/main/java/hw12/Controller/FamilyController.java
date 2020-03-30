@@ -1,6 +1,7 @@
 package hw12.Controller;
 
 import hw12.Entities.Family;
+import hw12.Entities.FamilyOverflowException;
 import hw12.Entities.Human;
 import hw12.Entities.Pet;
 import hw12.Service.FamilyService;
@@ -36,7 +37,7 @@ public class FamilyController {
     }
 
     public boolean deleteFamilyByIndex(int index) {
-        try{
+        try {
             serv.deleteFamilyByIndex(index);
             return true;
         } catch (IllegalArgumentException ex) {
@@ -45,12 +46,14 @@ public class FamilyController {
         }
     }
 
-    public Family bornChild(Family fam, String boy_name, String girl_name) {
-        return serv.bornChild(fam, boy_name, girl_name);
+    public void bornChild(Family fam, String boy_name, String girl_name) {
+        if (fam.countFamily() >= 10) throw new FamilyOverflowException("This family has too many children!");
+        serv.bornChild(fam, boy_name, girl_name);
     }
 
-    public Family adoptChild(Family fam, Human cld) {
-        return serv.adoptChild(fam, cld);
+    public void adoptChild(Family fam, Human cld) {
+        if (fam.countFamily() >= 10) throw new FamilyOverflowException("This family has too many children!");
+        serv.adoptChild(fam, cld);
     }
 
     public void deleteAllChildrenOlderThan(int age) {

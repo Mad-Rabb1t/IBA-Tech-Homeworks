@@ -289,6 +289,8 @@ public class Console {
                                     System.out.println("A new child is born...");
                                 } catch (NumberFormatException | IndexOutOfBoundsException ex) {
                                     System.out.println("Invalid id!");
+                                } catch (FamilyOverflowException ex){
+                                    System.out.println(ex.getMessage());
                                 }
                                 break;
                             }
@@ -321,6 +323,8 @@ public class Console {
                                     System.out.println("Entered date is not valid!");
                                 } catch (IndexOutOfBoundsException ex) {
                                     System.out.println("Invalid id!");
+                                } catch (FamilyOverflowException ex){
+                                    System.out.println(ex.getMessage());
                                 }
                                 break;
                             }

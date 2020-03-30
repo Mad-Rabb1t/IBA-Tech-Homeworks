@@ -44,7 +44,7 @@ public class FamilyService {
         return dao.deleteFamily(index - 1);
     }
 
-    public Family bornChild(Family fam, String boy_name, String girl_name) {
+    public void bornChild(Family fam, String boy_name, String girl_name) {
 
         int chance = (int) (Math.random()+1);
         switch (chance) {
@@ -60,14 +60,12 @@ public class FamilyService {
         }
 
         dao.saveFamily(fam);
-        return fam;
     }
 
-    public Family adoptChild(Family fam, Human cld) {
+    public void adoptChild(Family fam, Human cld) {
         cld.setFamily(fam);
         fam.addChild(cld);
         dao.saveFamily(fam);
-        return fam;
     }
 
     public void deleteAllChildrenOlderThan(int age) {
