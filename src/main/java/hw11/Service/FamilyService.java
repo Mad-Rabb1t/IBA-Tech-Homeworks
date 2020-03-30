@@ -9,15 +9,14 @@ import java.util.ArrayList;
 import java.util.stream.Collectors;
 
 public class FamilyService {
-    DAO<Family> dao = new CollectionFamilyDao();
+    private DAO<Family> dao = new CollectionFamilyDao();
 
     public ArrayList<Family> getAllFamilies() {
         return dao.getAllFamilies();
     }
 
-    public void displayAllFamilies() {
-        System.out.println("Families: ");
-        dao.getAllFamilies().forEach(System.out::println);
+    public ArrayList<Family> displayAllFamilies() {
+        return dao.getAllFamilies();
     }
 
     public ArrayList<Family> getFamiliesBiggerThan(int size) {

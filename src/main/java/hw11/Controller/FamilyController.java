@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class FamilyController {
 
-    FamilyService serv = new FamilyService();
+    private FamilyService serv = new FamilyService();
 
     public ArrayList<Family> getAllFamilies() {
         return serv.getAllFamilies();
