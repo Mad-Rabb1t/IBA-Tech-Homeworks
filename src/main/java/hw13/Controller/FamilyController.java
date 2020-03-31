@@ -6,6 +6,7 @@ import hw13.Entities.Human;
 import hw13.Entities.Pet;
 import hw13.Service.FamilyService;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class FamilyController {
@@ -74,5 +75,13 @@ public class FamilyController {
 
     public void addPet(int index, Pet pet) {
         serv.addPet(index, pet);
+    }
+
+    public void close(){
+        try {
+            serv.save();
+        } catch (IOException e) {
+            System.out.println("Couldn't save to file!");
+        }
     }
 }

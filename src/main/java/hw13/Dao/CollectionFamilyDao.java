@@ -5,6 +5,7 @@ import hw13.Entities.Family;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class CollectionFamilyDao implements DAO<Family> {
@@ -52,14 +53,11 @@ public class CollectionFamilyDao implements DAO<Family> {
         }
     }
 
-    public void saveToDB(){
-        File file = new File("bookings.txt");
+    public void saveToDB() throws IOException {
+        File file = new File("Families.txt");
         BufferedWriter bw = new BufferedWriter(new FileWriter(file));
-        String line;
-        for (: ) {
-            line = String.format();
-            bw.write(line);
-            bw.write("\n");
+        for (Family fam : families) {
+            bw.write(fam.dbFormat());
         }
         bw.close();
     }

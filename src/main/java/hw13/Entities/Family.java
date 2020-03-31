@@ -91,6 +91,15 @@ public class Family {
                 mother.prettyFormat(), father.prettyFormat(), children, pets);
     }
 
+    public String dbFormat(){
+        StringBuilder cld = new StringBuilder();
+        this.children.forEach(child -> cld.append(child.dbFormat()).append("~cld~"));
+        StringBuilder pts = new StringBuilder();
+        pets.forEach(pet -> pts.append(pet.dbFormat()).append("~pet~") );
+        return String.format("%s~D~%s~D~%s~D~%s\n",
+                mother.dbFormat(), father.dbFormat(), cld, pts);
+    }
+
     @Override
     public String toString() {
         return String.format("Family{mother=%s, father=%s, children=%s, pet=%s}", mother, father, children.toString(), pets.toString());

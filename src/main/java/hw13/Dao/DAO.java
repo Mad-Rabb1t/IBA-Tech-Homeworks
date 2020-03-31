@@ -2,6 +2,7 @@ package hw13.Dao;
 
 import hw13.Entities.Family;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public interface DAO<E> {
@@ -10,4 +11,5 @@ public interface DAO<E> {
     boolean deleteFamily(int index);
     boolean deleteFamily(Family fam);
     void saveFamily(Family fam);
+    void saveToDB() throws IOException;
 }

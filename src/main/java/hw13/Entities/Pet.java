@@ -74,6 +74,10 @@ public abstract class Pet {
                 species, nickname, age, trickLevel, habits);
     }
 
+    public String dbFormat(){
+        return String.format("%s:%s:%d:%d:%s:", species, nickname, age, trickLevel, habits);
+    }
+
     @Override
     public String toString() {
         return species + "{nickname = " + nickname + ", age = " + age + ",trickLevel=" + trickLevel + ",habits = " + habits + "\n";

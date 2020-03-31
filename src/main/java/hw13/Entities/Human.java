@@ -92,6 +92,11 @@ public class Human {
                         .format(DateTimeFormatter.ofPattern("dd/MM/yyyy")), iq, schedule);
     }
 
+    public String dbFormat(){
+        return String.format("%s:%s:%d:%d:%s",
+                name, surname, birthDate, iq, schedule);
+    }
+
     @Override
     public String toString() {
         return String.format("Human{name='%s', surname='%s', date of birth = %s, iq=%d, schedule=%s}", name, surname,

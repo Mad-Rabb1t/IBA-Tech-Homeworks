@@ -349,7 +349,10 @@ public class Console {
                     break;
                 }
 
-                case "exit": exit = true; break;
+                case "exit":{
+                    controller.close();
+                    exit = true;
+                } break;
 
                 default:
                     System.out.println("Select item from 1 to 9 or type 'exit' to quit...\n"); break;

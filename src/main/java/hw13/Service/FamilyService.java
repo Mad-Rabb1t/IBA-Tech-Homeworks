@@ -4,6 +4,7 @@ import hw13.Dao.CollectionFamilyDao;
 import hw13.Dao.DAO;
 import hw13.Entities.*;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
@@ -88,5 +89,9 @@ public class FamilyService {
         Family fam = dao.getFamilyByIndex(index);
         fam.setPet(pet);
         dao.saveFamily(fam);
+    }
+
+    public void save() throws IOException {
+        dao.saveToDB();
     }
 }
