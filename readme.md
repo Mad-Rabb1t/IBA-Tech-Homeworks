@@ -1,5 +1,1 @@
-### caption
-
-body
-
-[alexr github link](https://github.com/alexr007)
+Homework tasks of IBA Tech Backend course in Java
